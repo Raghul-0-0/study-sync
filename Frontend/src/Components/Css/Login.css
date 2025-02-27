@@ -10,9 +10,9 @@
 
 .loginBox{
     display: flex;
-    box-shadow: #313338;
-    border: 5px solid ;
+    border: 5px solid red ;
     border-radius: 30px;
+    border-color: red;  
     background-color: dimgray;
     height: 300px;
     width: 500px;
