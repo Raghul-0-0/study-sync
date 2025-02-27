@@ -1,0 +1,27 @@
+
+
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.loginBox{
+    display: flex;
+    box-shadow: #313338;
+    border: 5px solid ;
+    border-radius: 30px;
+    background-color: dimgray;
+    height: 300px;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.signupButton{
+    text-decoration: none;
+    color: #D0ADF0;
+    margin: 10px;
+}
