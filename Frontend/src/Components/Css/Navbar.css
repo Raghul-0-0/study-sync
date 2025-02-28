@@ -16,6 +16,22 @@
     color: #9E9EFF;
 }
 
+.navbarText:hover{
+    color: white;
+}
+
+.navbarSs{
+    border: 3px solid #4F545C;
+    border-radius: 15px;
+    font-size: 25px;
+    padding-top: 0px;
+}
+
+
+
+.navbarSs b{
+    padding: 3px;
+}
 
  /* Navbar text color : D0ADF0 
                         9E9EFF*/

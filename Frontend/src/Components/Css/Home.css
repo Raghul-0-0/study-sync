@@ -1,0 +1,14 @@
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.hero{
+    /* width: 80%; */
+}
+
+.parent h1{
+    font-size: 70px;
+}

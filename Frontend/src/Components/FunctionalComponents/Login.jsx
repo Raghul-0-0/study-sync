@@ -3,10 +3,10 @@ import "../Css/Login.css"
 const Login = () =>{
     return(
         
-        <div class="parent">
+        <div class="parentLogin">
         <div class="loginBox">
             <form class="login" action="/submit" method="POST">
-            <h1>LOGIN</h1><br />
+            <h1>LOGIN</h1>
 
                 <label htmlFor="username">USERNAME</label> <br />
                 <input type="text" id="email" required /> <br/>
