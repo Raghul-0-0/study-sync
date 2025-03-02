@@ -5,11 +5,14 @@ const dotenv = require("dotenv");
 const bcrypt = require("bcrypt")
 const PORT = 5000;
 const signup = require("./models/SignupSchema")
+const cors = require("cors");
+app.use(cors());
+
 dotenv.config()
 app.use(express.json())
 
 mdb
-    .connect("mongodb://localhost:27017/users")
+    .connect(process.env.MONGODB_URL)
     .then(()=> {
         console.log("MDB Connection Succesful");
     })

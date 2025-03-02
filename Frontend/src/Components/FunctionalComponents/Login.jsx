@@ -3,9 +3,9 @@ import "../Css/Login.css"
 const Login = () =>{
     return(
         
-        <div class="parentLogin">
-        <div class="loginBox">
-            <form class="login" action="/submit" method="POST">
+        <div className="parentLogin">
+        <div className="loginBox">
+            <form className="login" action="/submit" method="POST">
             <h1>LOGIN</h1>
 
                 <label htmlFor="username">USERNAME</label> <br />
