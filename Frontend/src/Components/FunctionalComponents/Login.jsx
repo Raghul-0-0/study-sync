@@ -9,9 +9,9 @@ const Login = () =>{
             <h1>LOGIN</h1>
 
                 <label htmlFor="username">USERNAME</label> <br />
-                <input type="text" id="email" required /> <br/>
+                <input type="text" id="email" required className="inputField"/> <br/>
                 <label htmlFor="password">PASSWORD</label> <br />
-                <input type="text" id="password" required /> <br/>
+                <input type="text" id="password" required className="inputField"/> <br/>
                 <button type="submit"> Log in</button>
                 <p>New to Study Sync?<Link to="/signup" class="signupButton">Signup</Link> </p>
               </form>
