@@ -9,7 +9,7 @@ const Signup = () =>{
             console.log("Hi from sendSignupDetails function");
     
         axios.post("http://localhost:5000/signup", {
-            "userName": "Raghul8",
+            "userName": "Raghul9",
             "password": "postman"
         })
         .then(response => console.log("Response:", response.data))
