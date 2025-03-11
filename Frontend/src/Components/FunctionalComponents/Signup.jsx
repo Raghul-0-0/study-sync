@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../Css/Signup.css";
 import axios from "axios";
@@ -6,6 +7,7 @@ const Signup = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [pwdVisibility, setPwdVisibility] = useState(false);
+  const navigate = useNavigate();
 
   const sendSignupDetails = async (e) => {
     e.preventDefault(); // Prevents page reload
@@ -25,7 +27,11 @@ const Signup = () => {
         userName: un.value,
         password: pw.value,
       })
-      .then((response) => console.log("Response:", response.data))
+      .then( (response) => {
+        console.log("Response:", response.data); 
+        navigate("/login")
+        })
+
       .catch((error) => console.error("Error:", error));
   };
 
