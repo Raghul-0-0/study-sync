@@ -3,7 +3,7 @@ const app = express();
 const mdb = require("mongoose");
 const dotenv = require("dotenv");
 const bcrypt = require("bcrypt")
-const PORT = 5000;
+const PORT = 5002;
 const signup = require("./models/SignupSchema")
 const cors = require("cors");
 app.use(cors());
@@ -36,6 +36,39 @@ app.post("/signup",async(req,res) => {
         console.log("Signup error", error);
         res.status(400).json({message:"Signup Unsuccesful" , isSignup:false});
     }
+})
+
+app.post("/login",async(req,res) => {
+    const{userName,password} = req.body;   
+    try{
+        const userDetails = await signup.findOne({userName});
+        console.log(userName,password);
+        // User Exists (now check password):
+        if(userDetails!=null){
+            const storedPw = userDetails.password; 
+            bcrypt.compare(password,storedPw , (err,result) =>{
+                if(err){
+                    console.log("bro error : ",err);
+                }
+                if(result){
+                    console.log("bro password matched!!!!");
+                }
+                else{
+                    console.log("bro password worng!!!!");
+                }
+            } )
+        }
+        // User does not Exist:
+        else{
+            console.log('user does not exist!!!!')
+        }
+        res.status(200).json({message:"recieved req"});
+        
+    }
+    catch(err){
+        console.log("bruh error : ",err);
+        res.status(400).json({message:"failed"});
+    } 
 })
 
 app.listen(PORT, () => {

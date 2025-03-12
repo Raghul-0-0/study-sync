@@ -24,3 +24,12 @@
     color: #D0ADF0;
     margin: 10px;
 }
+
+
+.loginButton{
+    border-radius: 6px;
+    cursor:pointer;
+    color: black;
+    box-shadow: none;
+    border: 1px solid #ccc;
+}
