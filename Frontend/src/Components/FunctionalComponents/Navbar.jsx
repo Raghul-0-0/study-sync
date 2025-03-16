@@ -34,7 +34,7 @@ const Navbar = ({ isLoggedIn, currentUser }) => {
               )}
             </div>
           ) : (
-            <Link to="/Login" className="navbarText">LOGIN</Link>
+                <Link to="/login" className="navbarText">LOGIN</Link>
           )}
 
           <Link to="/Contact" className="navbarText">CONTACT</Link>

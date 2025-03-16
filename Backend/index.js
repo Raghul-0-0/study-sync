@@ -3,7 +3,7 @@ const app = express();
 const mdb = require("mongoose");
 const dotenv = require("dotenv");
 const bcrypt = require("bcrypt")
-const PORT = 5002;
+const PORT = process.env.PORT || 5002;
 const signup = require("./models/SignupSchema")
 const cors = require("cors");
 app.use(cors());
@@ -98,5 +98,5 @@ const examSchema = new mdb.Schema({
 
 
 app.listen(PORT, () => {
-    console.log(`Server started successfully on https://localhost:${PORT}`)
+    console.log(`Server started successfully on port ${PORT}`);
 });
