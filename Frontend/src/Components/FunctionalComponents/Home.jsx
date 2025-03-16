@@ -7,7 +7,7 @@ const Home = ({ isLoggedIn }) => {
     <div className="parent">
       {isLoggedIn ? (
         <div className="logged-in-home">
-          <h1>Welcome to Study Sync!</h1>
+          <h1> Study Sync!</h1>
           <div className="action-buttons">
             <Link to="/add-exam" className="exam-button">Add an Exam</Link>
             <Link to="/calendar" className="calendar-button">See Calendar</Link>

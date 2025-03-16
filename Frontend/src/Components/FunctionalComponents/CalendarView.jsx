@@ -8,6 +8,12 @@ import { FiAlertCircle } from "react-icons/fi";
 const CalendarView = ({ currentUser }) => {
   const [date, setDate] = useState(new Date());
   const [exams, setExams] = useState([]);
+  const [tooltip, setTooltip] = useState({
+    visible: false,
+    text: "",
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     const fetchExams = async () => {
@@ -23,12 +29,48 @@ const CalendarView = ({ currentUser }) => {
     fetchExams();
   }, [currentUser]);
 
+  const handleMouseEnter = (event, dayExams) => {
+    const examText =
+      dayExams.length > 0
+        ? `${dayExams[0].name} - ${dayExams[0].notes}`
+        : "No exams on this day";
+
+    setTooltip({
+      visible: true,
+      text: examText,
+      x: event.clientX,
+      y: event.clientY + 15, // Offset below cursor
+    });
+  };
+
+  const handleMouseMove = (event) => {
+    setTooltip((prevTooltip) => ({
+      ...prevTooltip,
+      x: event.clientX,
+      y: event.clientY + 15,
+    }));
+  };
+
+  const handleMouseLeave = () => {
+    setTooltip({ ...tooltip, visible: false });
+  };
+
   const tileContent = ({ date, view }) => {
     if (view === "month") {
       const dayExams = exams.filter(
         (exam) => new Date(exam.date).toDateString() === date.toDateString()
       );
-      return dayExams.length > 0 ? <FiAlertCircle className="exam-dot" /> : null;
+
+      return (
+        <div
+          className="tile-content"
+          onMouseEnter={(e) => handleMouseEnter(e, dayExams)}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          {dayExams.length > 0 ? <FiAlertCircle className="exam-dot" /> : null}
+        </div>
+      );
     }
   };
 
@@ -41,6 +83,17 @@ const CalendarView = ({ currentUser }) => {
         tileContent={tileContent}
         className="react-calendar"
       />
+      {tooltip.visible && (
+        <div
+          className="tooltip"
+          style={{
+            top: tooltip.y + "px",
+            left: tooltip.x + "px",
+          }}
+        >
+          {tooltip.text}
+        </div>
+      )}
     </div>
   );
 };

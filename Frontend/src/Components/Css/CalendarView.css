@@ -29,3 +29,24 @@
   .react-calendar__tile--now {
     background-color: #4F545C !important;
   }
+/* Tooltip Styling */
+.tooltip {
+    position: fixed;
+    background-color: #23272A;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+  
+  .tile-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
