@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
       const password = document.getElementById("password").value;
   
       try {
-        const response = await axios.post("http://localhost:5002/login", {
+        const response = await axios.post("https://study-sync-35ie.onrender.com/login", {
           userName: username,
           password: password
         });

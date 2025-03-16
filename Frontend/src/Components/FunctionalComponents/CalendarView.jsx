@@ -19,7 +19,7 @@ const CalendarView = ({ currentUser }) => {
     const fetchExams = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5002/exams/${currentUser}`
+          `https://study-sync-35ie.onrender.com/exams/${currentUser}`
         );
         setExams(response.data);
       } catch (error) {

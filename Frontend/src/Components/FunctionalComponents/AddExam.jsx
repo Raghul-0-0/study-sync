@@ -12,7 +12,7 @@ const AddExam = ({ currentUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5002/exams", {
+      await axios.post("https://study-sync-35ie.onrender.com/exams", {
         username: currentUser,
         name: examName,
         date: examDate,
