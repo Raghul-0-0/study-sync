@@ -12,3 +12,39 @@
 .parent h1{
     font-size: 70px;
 }
+
+.logged-in-home {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+  
+  .exam-button,
+  .calendar-button {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+  }
+  
+  .exam-button {
+    background-color: #9E9EFF;
+    color: #1E2124;
+  }
+  
+  .calendar-button {
+    background-color: #D0ADF0;
+    color: #1E2124;
+  }
+  
+  .exam-button:hover,
+  .calendar-button:hover {
+    transform: translateY(-3px);
+  }

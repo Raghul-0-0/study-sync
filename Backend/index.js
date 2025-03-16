@@ -37,40 +37,65 @@ app.post("/signup",async(req,res) => {
         res.status(400).json({message:"Signup Unsuccesful" , isSignup:false});
     }
 })
-
-app.post("/login",async(req,res) => {
-    const{userName,password} = req.body;   
-    try{
-        const userDetails = await signup.findOne({userName});
-        console.log(userName,password);
-        // User Exists (now check password):
-        if(userDetails!=null){
-            const storedPw = userDetails.password; 
-            bcrypt.compare(password,storedPw , (err,result) =>{
-                if(err){
-                    console.log("bro error : ",err);
-                }
-                if(result){
-                    res.status(200).json({message:"logged in !"})
-                    console.log("bro password matched!!!!");
-                }
-                else{
-                    console.log("bro password worng!!!!");
-                    res.status(400).json({message:"password mismatch"})
-                }
-            } )
-        }
-        // User does not Exist:
-        else{
-            console.log('user does not exist!!!!')
-        }
-        
+app.post("/login", async (req, res) => {
+    const { userName, password } = req.body;
+    
+    try {
+      const userDetails = await signup.findOne({ userName });
+      
+      if (!userDetails) {
+        console.log('User does not exist');
+        return res.status(400).json({ message: "User not found" });
+      }
+  
+      const match = await bcrypt.compare(password, userDetails.password);
+      
+      if (match) {
+        res.status(200).json({ 
+          message: "logged in !", 
+          username: userDetails.userName 
+        });
+      } else {
+        res.status(400).json({ message: "Invalid password" });
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      res.status(500).json({ message: "Server error" });
     }
-    catch(err){
-        console.log("bruh error : ",err);
-        res.status(400).json({message:"failed"});
-    } 
-})
+  });
+
+// Add exam routes
+const examSchema = new mdb.Schema({
+    username: String,
+    name: String,
+    date: Date,
+    time: String,
+    notes: String
+  });
+  
+  const Exam = mdb.model("Exam", examSchema);
+  
+  // Get exams for user
+  app.get("/exams/:username", async (req, res) => {
+    try {
+      const exams = await Exam.find({ username: req.params.username });
+      res.status(200).json(exams);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching exams" });
+    }
+  });
+  
+  // Add new exam
+  app.post("/exams", async (req, res) => {
+    try {
+      const newExam = new Exam(req.body);
+      await newExam.save();
+      res.status(201).json(newExam);
+    } catch (error) {
+      res.status(500).json({ message: "Error saving exam" });
+    }
+  });
+
 
 app.listen(PORT, () => {
     console.log(`Server started successfully on https://localhost:${PORT}`)
