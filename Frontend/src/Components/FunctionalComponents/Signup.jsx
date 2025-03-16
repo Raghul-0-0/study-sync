@@ -22,7 +22,7 @@ const Signup = () => {
     }
 
     await axios
-      .post("http://localhost:5002/signup", {
+      .post("https://study-sync-35ie.onrender.com/signup", {
         userName: un.value,
         password: pw.value,
       })
