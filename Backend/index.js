@@ -51,10 +51,12 @@ app.post("/login",async(req,res) => {
                     console.log("bro error : ",err);
                 }
                 if(result){
+                    res.status(200).json({message:"logged in !"})
                     console.log("bro password matched!!!!");
                 }
                 else{
                     console.log("bro password worng!!!!");
+                    res.status(400).json({message:"password mismatch"})
                 }
             } )
         }
@@ -62,7 +64,6 @@ app.post("/login",async(req,res) => {
         else{
             console.log('user does not exist!!!!')
         }
-        res.status(200).json({message:"recieved req"});
         
     }
     catch(err){

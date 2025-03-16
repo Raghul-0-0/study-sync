@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../Css/Navbar.css";
-
-const Navbar = () => {
+import Login from "./Login";
+const Navbar = ({isLoggedin}) => {
     return(
         <header>
             <nav className="test">
@@ -10,7 +10,7 @@ const Navbar = () => {
                     <span className="navbarSs"><b>Study Sync</b></span>
                     <Link to="/" className="navbarText">HOME</Link>
                     <Link to="/Settings" className="navbarText">SETTINGS</Link>
-                    <Link to="/Login" className="navbarText">LOGIN</Link>
+                    <Link to="/Login" className="navbarText">{isLoggedin ? "LOGOUT"  : "LOGIN" }</Link>
                     <Link to="/Contact" className="navbarText"> CONTACT</Link>
                 </li>
 
