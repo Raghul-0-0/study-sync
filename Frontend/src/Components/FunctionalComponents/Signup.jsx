@@ -9,7 +9,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const sendSignupDetails = async (e) => {
-    e.preventDefault(); // Prevents page reload
+    e.preventDefault(); 
     console.log("Hi from sendSignupDetails function");
 
     const un = document.getElementById("username");
