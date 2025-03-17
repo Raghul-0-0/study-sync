@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import "../Css/Navbar.css";
-import { useState } from "react";
+import { useState,useNavigate } from "react";
 
 const Navbar = ({ isLoggedIn, currentUser }) => {
   const [showDropdown, setShowDropdown] = useState(false);
-
+  const navigate = useNavigate();
+  
   const handleLogout = () => {
     window.location.reload(); // Force refresh the page
+    navigate("/");
   };
 
   return (

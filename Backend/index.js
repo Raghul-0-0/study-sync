@@ -65,13 +65,7 @@ app.post("/login", async (req, res) => {
   });
 
 // schema for exam
-const examSchema = new mdb.Schema({
-    username: String,
-    name: String,
-    date: Date,
-    time: String,
-    notes: String
-  });
+
   
   const Exam = mdb.model("Exam", examSchema);
   
