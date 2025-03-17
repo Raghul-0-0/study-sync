@@ -64,7 +64,7 @@ app.post("/login", async (req, res) => {
     }
   });
 
-// Add exam routes
+// schema for exam
 const examSchema = new mdb.Schema({
     username: String,
     name: String,
@@ -75,7 +75,7 @@ const examSchema = new mdb.Schema({
   
   const Exam = mdb.model("Exam", examSchema);
   
-  // Get exams for user
+  // Get exams for the user
   app.get("/exams/:username", async (req, res) => {
     try {
       const exams = await Exam.find({ username: req.params.username });
@@ -85,7 +85,7 @@ const examSchema = new mdb.Schema({
     }
   });
   
-  // Add new exam
+  // Add a new exam
   app.post("/exams", async (req, res) => {
     try {
       const newExam = new Exam(req.body);
@@ -95,6 +95,22 @@ const examSchema = new mdb.Schema({
       res.status(500).json({ message: "Error saving exam" });
     }
   });
+
+  app.post("/contact", async (req, res) => {
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+    
+    try {
+      // Save to database or send email (if configured)
+      console.log("Contact Form Data:", { name, email, message });
+      res.status(200).json({ success: true, message: "Message received!" });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to process request" });
+    }
+  });
+  
 
 
 app.listen(PORT, () => {
